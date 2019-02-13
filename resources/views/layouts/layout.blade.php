@@ -11,11 +11,14 @@
 
 <body>
   <div class="header">
-    <div class="logo-area">
-      <div class="logo">TABIサーチ</div>
-    </div>
-    <div class="button">@yield('button')</div>
-    <div class="icon">@yield('icon')</div>
+    <p class="logo">TABIサーチ</p>
+    <nav>
+      <ul>
+        <li>@yield('button1')</li>
+        <li>@yield('button2')</li>
+        <li>@yield('icon')</li>
+      </ul>
+    </nav>
   </div>
   <div class="content">@yield('content')</div>
   <div class="footer">

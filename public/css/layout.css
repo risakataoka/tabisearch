@@ -1,18 +1,24 @@
 body {
   font-size: 12pt;
   color:#373737;
-  margin: 5px;
+  margin: 0px;
 }
 .header {
-  margin: 40px;
+  margin: 20px;
   border-bottom: 2px solid #02cda2;
-  overflow:hidden;
+  text-align: right;
 }
-.logo-area {
-  text-align: center;
-}
+
 .logo {
-  font-size: 16px;
+  position: absolute;
+  font-size: 20px;
+  padding-top: 10px;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-right: 5px;
+  padding-top: 5px;
 }
 .footer {
   margin: 40px;

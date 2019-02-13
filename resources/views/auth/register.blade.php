@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title','新規登録 | TABIサーチ')
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
