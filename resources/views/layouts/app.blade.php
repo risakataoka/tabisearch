@@ -60,7 +60,7 @@
     </div>
     <div class="footer">
       <div class="copyright">copyright 2019 kataoka.</div>
-      <div class="contact"><a href="#">お問い合わせ</a></div>
+      <div class="contact"><a href="/contact">お問い合わせ</a></div>
     </div>
 </body>
 </html>

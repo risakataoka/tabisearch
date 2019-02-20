@@ -42,6 +42,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
+                              <input type="hidden" name="email_verify_token" value="{{$email_token}}">
                                 <button type="submit" class="btn btn-primary">
                                     本登録
                                 </button>

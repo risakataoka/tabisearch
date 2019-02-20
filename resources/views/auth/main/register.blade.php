@@ -14,7 +14,7 @@
 
                     @empty($message)
                         <div class="card-body">
-                            <form method="POST" action="{{ route('register.pre_check') }}">
+                            <form method="POST" action="{{ route('register.main.check') }}">
                                 @csrf
                                 <div class="form-group row">
                                     <label for="name" class="col-md-4 col-form-label text-md-right">名前</label>
@@ -114,6 +114,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
+                              <input type="hidden" name="email_verify_token" value="{{$email_token}}">
                                 <button type="submit" class="btn btn-primary">
                                     確認画面へ
                                 </button>

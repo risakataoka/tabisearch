@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Carbon;
+use Config;
 
 class RegisterController extends Controller
 {
@@ -121,6 +122,7 @@ class RegisterController extends Controller
                 // ユーザーステータス更新
                 $user->status = config('const.USER_STATUS.MAIL_AUTHED');
                 $user->verify_at = Carbon::now();
+                \Debugbar::error($email_token);
                 if($user->save()) {
                     return view('auth.main.register', compact('email_token'));
                 } else{
@@ -139,22 +141,24 @@ class RegisterController extends Controller
                'birth_day' => 'required|numeric',
              ]);
              //データ保持用
-             $email_token = $request->email_token;
-
+             \Debugbar::error($request);
              $user = new User();
              $user->name = $request->name;
              $user->name_pronunciation = $request->name_pronunciation;
              $user->birth_year = $request->birth_year;
              $user->birth_month = $request->birth_month;
              $user->birth_day = $request->birth_day;
+             $email_token = $request->email_token;
 
              return view('auth.main.register_check', compact('user','email_token'));
            }
 
            public function mainRegister(Request $request)
              {
+              \Debugbar::error($request);
                $user = User::where('email_verify_token',$request->email_token)->first();
-               $user->status = config('const.USER_STATUS.REGISTER');
+              \Debugbar::error($user);
+               $user->status = Config::get('const.USER_STATUS.REGISTER');
                $user->name = $request->name;
                $user->name_pronunciation = $request->name_pronunciation;
                $user->birth_year = $request->birth_year;

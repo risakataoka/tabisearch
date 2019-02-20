@@ -7,6 +7,7 @@
     <title>@yield('title')</title>
     <!-- Styles -->
     <link href="{{ asset('css/layout.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -23,7 +24,7 @@
   <div class="content">@yield('content')</div>
   <div class="footer">
     <div class="copyright">copyright 2019 kataoka.</div>
-    <div class="contact"><a href="#">お問い合わせ</a></div>
+    <div class="contact"><a href="/contact">お問い合わせ</a></div>
   </div>
 </body>
 </html>

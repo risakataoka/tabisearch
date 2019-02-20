@@ -26,3 +26,7 @@ Route::post('register/pre_check', 'Auth\RegisterController@pre_check')->name('re
 Route::get('register/verify/{token}', 'Auth\RegisterController@showForm');
 Route::post('register/main_check', 'Auth\RegisterController@mainCheck')->name('register.main.check');
 Route::post('register/main_register', 'Auth\RegisterController@mainRegister')->name('register.main.registered');
+
+Route::get('contact', 'ContactsController@index');
+Route::post('contact/confirm', 'ContactsController@confirm');
+Route::post('contact/complete', 'ContactsController@complete');
