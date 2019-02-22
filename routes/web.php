@@ -30,3 +30,6 @@ Route::post('register/main_register', 'Auth\RegisterController@mainRegister')->n
 Route::get('contact', 'ContactsController@index');
 Route::post('contact/confirm', 'ContactsController@confirm');
 Route::post('contact/complete', 'ContactsController@complete');
+
+/*スクレイピングテスト*/
+Route::get('/test',"TestsController@search");

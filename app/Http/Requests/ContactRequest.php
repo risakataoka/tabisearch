@@ -25,7 +25,7 @@ class ContactRequest extends FormRequest
     {
         return [
           'type' => 'required',
-          'type.*' => 'in:商品について,サービスについて,その他',
+          'type.*' => 'in:サービスについて,その他',
           'name' => 'required|max:10',
           'email' => 'required|email',
           'gender' => 'required|in:男,女',

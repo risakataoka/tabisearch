@@ -148,7 +148,7 @@ class RegisterController extends Controller
              $user->birth_year = $request->birth_year;
              $user->birth_month = $request->birth_month;
              $user->birth_day = $request->birth_day;
-             $email_token = $request->email_token;
+             $email_token = $request->email_verify_token;
 
              return view('auth.main.register_check', compact('user','email_token'));
            }
@@ -156,9 +156,9 @@ class RegisterController extends Controller
            public function mainRegister(Request $request)
              {
               \Debugbar::error($request);
-               $user = User::where('email_verify_token',$request->email_token)->first();
+               $user = User::where('email_verify_token',$request->email_verify_token)->first();
               \Debugbar::error($user);
-               $user->status = Config::get('const.USER_STATUS.REGISTER');
+               $user->status = config('const.USER_STATUS.REGISTER');
                $user->name = $request->name;
                $user->name_pronunciation = $request->name_pronunciation;
                $user->birth_year = $request->birth_year;

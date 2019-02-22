@@ -1,3 +1,4 @@
+/*ヘッダーフッター*/
 body {
   font-size: 12pt;
   color:#373737;
@@ -66,4 +67,39 @@ nav ul li {
 }
 .icon {
   float:right;
+}
+/*囲みデザイン*/
+.panel-heading {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    font-weight: bold;
+    color: #627295;/*文字色*/
+    background: #FFF;
+    border: solid 3px #02cda2;/*線*/
+    border-radius: 10px;/*角の丸み*/
+}
+.panel-heading p {
+    margin: 0;
+    padding: 0;
+}
+
+/*問い合わせフォーム*/
+section table { width: 100%; }
+section th, section td  { padding: 10px; border: 1px solid #ddd; }
+section th  { background: #f4f4f4; }
+
+/*----------------------------------------------------
+  .demo01
+----------------------------------------------------*/
+.demo01 th  { width: 30%; text-align: left; }
+
+@media only screen and (max-width:480px){
+    .demo01 { margin: 0 -10px; }
+    .demo01 th,
+    .demo01 td{
+    width: 100%;
+    display: block;
+    border-top: none;
+    }
+  .demo01 tr:first-child th { border-top: 1px solid #ddd; }
 }
