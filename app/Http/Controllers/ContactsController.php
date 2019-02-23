@@ -48,7 +48,6 @@ class ContactsController extends Controller
     // 二重送信防止
     $request->session()->regenerateToken();
 
-    return view('contacts.complete');
 
     // 送信メール
     \Mail::send(new \App\Mail\Contact([
@@ -60,11 +59,11 @@ class ContactsController extends Controller
         'type' => $request->type,
         'gender' => $request->gender,
         'body' => $request->body
-    ]));
+    ],'to'));
 
     // 受信メール
     \Mail::send(new \App\Mail\Contact([
-        'to' => 'from@example.com',
+        'to' => 'kataoka@gmail.com',
         'to_name' => 'MySite',
         'from' => $request->email,
         'from_name' => $request->name,
@@ -73,6 +72,7 @@ class ContactsController extends Controller
         'gender' => $request->gender,
         'body' => $request->body
     ], 'from'));
+    return view('contacts.complete');
   }
 
 

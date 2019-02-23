@@ -33,3 +33,5 @@ Route::post('contact/complete', 'ContactsController@complete');
 
 /*スクレイピングテスト*/
 Route::get('/test',"TestsController@search");
+/*スクレイピングテストのテスト*/
+Route::get('/testtest',"TesttestController@index");
