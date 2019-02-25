@@ -9,16 +9,13 @@ class TesttestController extends Controller
 {
   public function index(Request $request)
   {
-    $crawler = Goutte::request('GET', 'https://www.travel.co.jp/guide/ranking/daily/');
 
-    $items = $crawler->filter('a.rank_item_ttl')->each(function($node){
-       $titles = $node->filter('a.rank_item_ttl')->attr('href');
-       //$uri = $node->filter('.rank_item_ttl')->filter('a')->attr('href');
-       return $titles;
-       //return $uri;
+    $crawler = Goutte::request('GET', 'https://www.travel.co.jp/guide/archive_world/list/r5/hotel/');
+    $article_titles = $crawler->filter('.title_mod')->each(function ($node) {
+     return $node->text();
     });
 
-    return view('testtest');
+    return view('testtest',$article_titles);
   }
 
 
