@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('title','スクレイピングテスト | TABIサーチ')
+@section('title','インデックスページ | TABIサーチ')
 @section('content')
 <!--bootstrapで幅を指定-->
 <div class="col-md-8" style="margin-left: 16.666%;">
 <!--form actionでsearchアクションを取得-->
-  <form action="{{ action('TestsController@search') }}" method="get">
+  <form action="{{ action('TabiController@search') }}" method="get">
     <label>タイトルを検索する</label>
     <div class="form-group row">
         <div class="col col-9">

@@ -1,11 +1,13 @@
 @extends('layouts.app')
 
-@section('title','インデックスページ | TABIサーチ')
+@section('title','ログイン後インデックスページ | TABIサーチ')
 @section('content')
 <!--bootstrapで幅を指定-->
+<div id="access">2回目以降のアクセス</div>
+<button id="del">cookie削除</button>
 <div class="col-md-8" style="margin-left: 16.666%;">
 <!--form actionでsearchアクションを取得-->
-  <form action="{{ action('TabiController@search') }}" method="get">
+  <form action="{{ action('AdminController@adminSearch') }}" method="get">
     <label>タイトルを検索する</label>
     <div class="form-group row">
         <div class="col col-9">
@@ -28,7 +30,7 @@
   <!--$iを配列の1番目からはじめて、$titlesを数えた分まで以下の内容を繰り返します-->
         @for($i=0;$i < count($titles_1);$i++)
           <div class="card-body">
-  <!--リンクを表示します$links[$i]の[$i]がいまいちわからない-->
+  <!--リンクを表示します$links[$i]の[$i]がいまいちわからない　idクラス作ってクリックイベントを作る-->
             <a href="{{ $links_1[$i] }}" class="row" target="_blank">
               <div class="col-md-2">
                 <img src="{{ $image_paths_1[$i] }}" alt="" style="width:100%;">
@@ -77,14 +79,14 @@
         @for($i=0;$i < count($titles_3);$i++)
           <div class="card-body">
   <!--リンクを表示します$links[$i]の[$i]がいまいちわからない-->
-            <a href="{{ $links_3[$i] }}" class="row" target="_blank">
-              <div class="col-md-2">
-                <img src="{{ $image_paths_3[$i] }}" alt="" style="width:100%;">
-              </div>
-              <div class="col-md-10">
-                <h3>{{ $titles_3[$i] }}</h3>
-              </div>
-            </a>
+              <a href="{{ $links_3[$i] }}" class="row" target="_blank" id="click_event">
+                <div class="col-md-2">
+                  <img src="{{ $image_paths_3[$i] }}" alt="" style="width:100%;">
+                </div>
+                <div class="col-md-10">
+                  <h3>{{ $titles_3[$i] }}</h3>
+                </div>
+              </a>
           </div>
         @endfor
       @endif
