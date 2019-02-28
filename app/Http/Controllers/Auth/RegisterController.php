@@ -88,7 +88,7 @@ class RegisterController extends Controller
     }
 
     public function pre_check(Request $request){
-        $this->validator($request->all())->validate();
+        $this->validator($request->all())->validate();  
         //flash data
         $request->flashOnly( 'email');
 

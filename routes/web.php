@@ -34,6 +34,8 @@ Route::post('register/main_register', 'Auth\RegisterController@mainRegister')->n
 Route::get('admin/news/mydata', 'AdminController@showMydata');
 Route::get('admin/news/delete_conformation', 'AdminController@deleteConform');
 Route::get('admin/news/delete', 'AdminController@delete')->middleware('auth');
+Route::get('admin/news/change_mail', 'AdminController@showChangeMail');
+Route::post('admin/change_mail', 'AdminController@changeMail');
 
 
 /*お問い合わせ*/

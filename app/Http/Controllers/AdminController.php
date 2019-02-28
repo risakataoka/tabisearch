@@ -162,4 +162,49 @@ class AdminController extends Controller
       return redirect('/');
     }
 
+//メールアドレスの変更ボタンを押した際のアクション
+  public function showChangeMail(Request $request)
+  {
+    $user = User::find($request->id);
+    return view('admin.news.change_mail', ['changemail_form' => $user]);
+  }
+//メールアドレスを入力し送信する際のアクション
+  public function changeMail(Request $request)
+  {
+    // ログインしているユーザーを取ってくる
+    $user = User::find($request->id);
+    $form = $request->all();
+    unset($form["_token"]);
+
+    $user->update(["email" => $form["email"]]);
+
+    // $address = $request->input('newAddress');
+    //     $token = hash_hmac(
+    //         'sha256',
+    //         str_random(40).$address,
+    //         env('APP_KEY')
+    //     );
+
+        // \Mail::send(new \App\User([
+        //   'to' => $address,
+        //   'to_name' => $request->name,
+        //   'from' => 'from@example.com',
+        //   'from_name' => 'MySite',
+        //   'subject' => 'メールアドレス変更確認'
+        // ],'to'));
+
+        // DB::table('email_changes')->insert([
+        //     [
+        //         'id' => $user->id,
+        //         'email' => $address,
+        //         'token' => $token
+        //     ]
+        // ]);
+
+        return view('admin.news.sendMailCompleted');
+  }
+
+
+
+
 }
