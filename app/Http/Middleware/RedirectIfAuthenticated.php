@@ -18,9 +18,9 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            return redirect('/home');
+            return redirect('/admin/news');
         }
-
+//elseでログインしてない場合のリダイレクト先を指定できるのか？
         return $next($request);
     }
 }

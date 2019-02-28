@@ -14,6 +14,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Carbon;
 use Config;
 
+
 class RegisterController extends Controller
 {
     /*
@@ -34,7 +35,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/admin/news';
 
     /**
      * Create a new controller instance.
@@ -168,4 +169,14 @@ class RegisterController extends Controller
 
                return view('auth.main.registered');
              }
+             //会員登録　論理削除
+             /*public function deleteData(Request $request)
+               {
+                 $user = Users::find($request->input('id'));
+                 $user->delete();
+                 return view('index');
+               }*/
+
+
+
 }

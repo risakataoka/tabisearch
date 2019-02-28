@@ -19,7 +19,7 @@ Route::get('/admin/news', 'AdminController@adminSearch');
 
 /*使わない*/
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 /**/
 Route::group(['prefix' => 'admin'], function() {
     Route::get('index', 'TabiController@adminIndex')->middleware('auth');
@@ -29,6 +29,13 @@ Route::post('register/pre_check', 'Auth\RegisterController@pre_check')->name('re
 Route::get('register/verify/{token}', 'Auth\RegisterController@showForm');
 Route::post('register/main_check', 'Auth\RegisterController@mainCheck')->name('register.main.check');
 Route::post('register/main_register', 'Auth\RegisterController@mainRegister')->name('register.main.registered');
+
+/*会員情報修正、退会*/
+Route::get('admin/news/mydata', 'AdminController@showMydata');
+Route::get('admin/news/delete_conformation', 'AdminController@deleteConform');
+Route::get('admin/news/delete', 'AdminController@delete')->middleware('auth');
+
+
 /*お問い合わせ*/
 Route::get('contact', 'ContactsController@index');
 Route::post('contact/confirm', 'ContactsController@confirm');

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Goutte;
 use DOMDocument;
+use Auth;
+use App\User;
 
 class AdminController extends Controller
 {
@@ -144,4 +146,20 @@ class AdminController extends Controller
      "titles_2" => $titles_2,"links_2" => $links_2, "image_paths_2" => $image_paths_2, "media_title_2" => $media_title_2,
      "titles_3" => $titles_3,"links_3" => $links_3, "image_paths_3" => $image_paths_3, "media_title_3" => $media_title_3]);
   }
+//会員ドロップダウンバーから「会員情報の修正・削除」ボタンを押した際のアクション
+  public function showMydata(){
+    return view('admin.news.mydata');
+  }
+//会員情報の修正・削除」ページの中の「退会」をクリックした際のアクション
+  public function deleteConform(){
+    return view('admin.news.delete_confirmation',['id'=> Auth::id()]);
+  }
+//「退会」ページの「はい、退会します」をクリックした際のデリートアクション
+  public function delete(Request $request)
+    {
+      $user = User::find($request->id);
+      $user->delete();
+      return redirect('/');
+    }
+
 }
