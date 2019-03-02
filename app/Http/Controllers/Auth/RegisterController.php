@@ -29,13 +29,12 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
-
     /**
      * Where to redirect users after registration.
      *
      * @var string
      */
-    protected $redirectTo = '/admin/news';
+    protected $redirectTo = '/login';
 
     /**
      * Create a new controller instance.
@@ -88,7 +87,7 @@ class RegisterController extends Controller
     }
 
     public function pre_check(Request $request){
-        $this->validator($request->all())->validate();  
+        $this->validator($request->all())->validate();
         //flash data
         $request->flashOnly( 'email');
 

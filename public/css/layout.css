@@ -4,17 +4,21 @@ body {
   color:#373737;
   margin: 0px;
 }
+.logo {
+  display: block;
+  float: left;
+  max-width: 115px;
+  max-height: 75px;
+}
+
 .header {
   margin: 20px;
   border-bottom: 2px solid #02cda2;
   text-align: right;
+  overflow: visible;
 }
 
-.logo {
-  position: absolute;
-  font-size: 20px;
-  padding-top: 10px;
-}
+
 
 nav ul li {
   display: inline-block;

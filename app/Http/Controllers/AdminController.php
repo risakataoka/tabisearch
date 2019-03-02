@@ -145,6 +145,8 @@ class AdminController extends Controller
      "titles_1" => $titles_1,"links_1" => $links_1, "image_paths_1" => $image_paths_1, "media_title_1" => $media_title_1,
      "titles_2" => $titles_2,"links_2" => $links_2, "image_paths_2" => $image_paths_2, "media_title_2" => $media_title_2,
      "titles_3" => $titles_3,"links_3" => $links_3, "image_paths_3" => $image_paths_3, "media_title_3" => $media_title_3]);
+//パジネーション
+     //$posts = Post::latest()->paginate(5);
   }
 //会員ドロップダウンバーから「会員情報の修正・削除」ボタンを押した際のアクション
   public function showMydata(){
@@ -204,6 +206,22 @@ class AdminController extends Controller
         return view('admin.news.sendMailCompleted');
   }
 
+  public function passwordReset(Request $request)
+  {
+    $user = Auth::user();
+
+      return view("admin.passwordReset",["email"=>$user->email]);
+  }
+
+    public function passwordUpdate(Request $request)
+    {
+        $user = Auth::user();
+        $form = $request->all();
+        unset($form["_token"]);
+        $user->update($form);
+
+        return redirect("/");
+    }
 
 
 

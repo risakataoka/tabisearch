@@ -36,6 +36,8 @@ Route::get('admin/news/delete_conformation', 'AdminController@deleteConform');
 Route::get('admin/news/delete', 'AdminController@delete')->middleware('auth');
 Route::get('admin/news/change_mail', 'AdminController@showChangeMail');
 Route::post('admin/change_mail', 'AdminController@changeMail');
+Route::get('admin/passwordReset', 'AdminController@passwordReset');
+Route::post('/admin/password/update', 'AdminController@passwordUpdate');
 
 
 /*お問い合わせ*/
@@ -44,6 +46,8 @@ Route::post('contact/confirm', 'ContactsController@confirm');
 Route::post('contact/complete', 'ContactsController@complete');
 
 
+Route::post('/browsinghistoriy/create', 'BrownsingHistoryController@create')->middleware('auth');
+// Route::get('/browsinghistoriy', 'BrownsingHistoryController@index')->middleware('auth');
 
 
 /*スクレイピングテスト

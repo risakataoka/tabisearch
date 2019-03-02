@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title')</title>
-
+<meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -30,7 +30,9 @@
 <body>
 
     <div class="header">
-      <p class="logo">TABIサーチ</p>
+      <a href="/">
+        <img alt="TABIsearch" title="TABIsearch" src="/image/logo.png" class="logo">
+      </a>
       <nav>
         <ul>
           @guest
