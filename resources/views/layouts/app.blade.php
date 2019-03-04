@@ -12,8 +12,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="{{ asset('js/historypage.js') }}"></script>
-    <script src="{{ asset('js/jquery.cookie.js') }}"></script>
+    <script src="{{ asset('js/jquery.bgswitcher.js') }}"></script>
 
 
     <!-- Fonts -->
@@ -27,7 +26,7 @@
 
 
 </head>
-<body>
+    <body>
 
     <div class="header">
       <a href="/">

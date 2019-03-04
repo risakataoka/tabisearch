@@ -7,8 +7,8 @@ body {
 .logo {
   display: block;
   float: left;
-  max-width: 115px;
-  max-height: 75px;
+  max-width: 100px;
+  height: 65px;
 }
 
 .header {
@@ -106,4 +106,25 @@ section th  { background: #f4f4f4; }
     border-top: none;
     }
   .demo01 tr:first-child th { border-top: 1px solid #ddd; }
+}
+/*----------------------------------------------------
+  背景画像スライドショー　jQuery
+----------------------------------------------------*/
+
+.bg-slider {
+	width: 100vw;
+	height: 100vh;
+	background-position:center center;
+	background-size: cover;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.bg-slider__title{
+	color: #fff;
+	font-size: 48px;
+	line-height: 1.5;
+	font-weight: bold;
+	text-align:center;
+	text-shadow: 1px 1px 1px #000;
 }

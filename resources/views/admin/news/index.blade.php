@@ -3,6 +3,7 @@
 @section('title','ログイン後インデックスページ | TABIサーチ')
 @section('content')
 <!--bootstrapで幅を指定-->
+<div class="bg-slider">
   <div class="col-md-8" style="margin-left: 16.666%;">
   <!--form actionでsearchアクションを取得-->
     <form action="{{ action('AdminController@adminSearch') }}" method="get">
@@ -102,11 +103,11 @@
         </ul>
     </div>
   </div>
+</div>
 <!-- /browsinghistoriy/create -->
 <script>
         $(function(){
             // Ajax button click
-
           $.ajaxSetup({
               headers: {
                   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -134,11 +135,17 @@
                 // Ajaxリクエストが成功・失敗どちらでも発動
                 .always( (data) => {
                   console.log("成功");
-
                 });
             });
         });
-
+</script>
+<!--背景画像スライドショー-->
+<script>
+jQuery(function($) {
+    $('.bg-slider').bgSwitcher({
+        images: ['/image/bg-slider/bg1.jpg','/image/bg-slider/bg2.jpg','/image/bg-slider/bg3.jpg'], // 切り替える背景画像を指定
+    });
+});
 </script>
 
 @endsection

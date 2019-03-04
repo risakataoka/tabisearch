@@ -3,7 +3,7 @@
 @section('title','インデックスページ | TABIサーチ')
 @section('content')
 <!--bootstrapで幅を指定-->
-<div class="container">
+<div class="bg-slider">
     <div class="col-md-8" style="margin-left: 16.666%;">
     <!--form actionでsearchアクションを取得-->
       <form action="{{ action('TabiController@search') }}" method="get">
@@ -94,4 +94,13 @@
       <!--3つめbootstrap終わり-->
     </div>
 </div>
+
+<!--背景画像スライドショー-->
+<script>
+jQuery(function($) {
+    $('.bg-slider').bgSwitcher({
+        images: ['/image/bg-slider/bg1.jpg','/image/bg-slider/bg2.jpg','/image/bg-slider/bg3.jpg'], // 切り替える背景画像を指定
+    });
+});
+</script>
 @endsection
