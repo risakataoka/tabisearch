@@ -27,43 +27,42 @@
 
 </head>
     <body>
+      <div class="header">
+        <a href="/">
+          <img alt="TABIsearch" title="TABIsearch" src="/image/logo.png" class="logo">
+        </a>
+        <nav>
+          <ul>
+            @guest
+            <li><a href="/login" class="btn-square-2">ログイン</a></li>
+              @if (Route::has('register'))
+              <li><a href="/register" class="btn-square-1">新規作成</a></li>
+              @endif
+            @else
+            <li class="nav-item dropdown">
+                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    {{ Auth::user()->name }} <span class="caret"></span>
+                </a>
 
-    <div class="header">
-      <a href="/">
-        <img alt="TABIsearch" title="TABIsearch" src="/image/logo.png" class="logo">
-      </a>
-      <nav>
-        <ul>
-          @guest
-          <li><a href="/login" class="btn-square-2">ログイン</a></li>
-            @if (Route::has('register'))
-            <li><a href="/register" class="btn-square-1">新規作成</a></li>
-            @endif
-          @else
-          <li class="nav-item dropdown">
-              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                  {{ Auth::user()->name }} <span class="caret"></span>
-              </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
 
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{{ route('logout') }}"
-                     onclick="event.preventDefault();
-                                   document.getElementById('logout-form').submit();">
-                      {{ __('Logout') }}
-                  </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                    <a class="dropdown-item" href="/admin/news/mydata">
+                        {{ __('ユーザー情報の修正・退会') }}
+                    </a>
 
-                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                      @csrf
-                  </form>
-                  <a class="dropdown-item" href="/admin/news/mydata">
-                      {{ __('ユーザー情報の修正・退会') }}
-                  </a>
+                </div>
+            </li>
+            @endguest
 
-              </div>
-          </li>
-          @endguest
-
-    </div>
+      </div>
 
 
         <main class="py-4">

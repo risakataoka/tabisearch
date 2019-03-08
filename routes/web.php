@@ -15,7 +15,8 @@
 Route::get('/','TabiController@search');
 
 /*ログイン後の検索画面のルート*/
-Route::get('/admin/news', 'AdminController@adminSearch');
+Route::get('/admin/news', 'AdminController@adminSearchIndex');
+Route::get('/admin/news/result', 'AdminController@adminSearch');
 
 /*使わない*/
 Auth::routes();

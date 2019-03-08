@@ -15,6 +15,14 @@ class AdminController extends Controller
     return view('admin.news.index');
   }*/
 
+//検索前と検索後のビューを分離する
+
+  public function adminSearchIndex(Request $request)
+  {
+    $cond_title = $request->cond_title;
+    return view('admin/news/index');
+  }
+
   public function adminSearch(Request $request)
   {
     ////////////////////////////////////////////////////
@@ -141,7 +149,7 @@ class AdminController extends Controller
         }
       }
 
-     return view('admin/news/index',["cond_title" => $cond_title,
+     return view('admin/news/result',["cond_title" => $cond_title,
      "titles_1" => $titles_1,"links_1" => $links_1, "image_paths_1" => $image_paths_1, "media_title_1" => $media_title_1,
      "titles_2" => $titles_2,"links_2" => $links_2, "image_paths_2" => $image_paths_2, "media_title_2" => $media_title_2,
      "titles_3" => $titles_3,"links_3" => $links_3, "image_paths_3" => $image_paths_3, "media_title_3" => $media_title_3]);
@@ -180,28 +188,6 @@ class AdminController extends Controller
 
     $user->update(["email" => $form["email"]]);
 
-    // $address = $request->input('newAddress');
-    //     $token = hash_hmac(
-    //         'sha256',
-    //         str_random(40).$address,
-    //         env('APP_KEY')
-    //     );
-
-        // \Mail::send(new \App\User([
-        //   'to' => $address,
-        //   'to_name' => $request->name,
-        //   'from' => 'from@example.com',
-        //   'from_name' => 'MySite',
-        //   'subject' => 'メールアドレス変更確認'
-        // ],'to'));
-
-        // DB::table('email_changes')->insert([
-        //     [
-        //         'id' => $user->id,
-        //         'email' => $address,
-        //         'token' => $token
-        //     ]
-        // ]);
 
         return view('admin.news.sendMailCompleted');
   }
