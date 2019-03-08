@@ -13,13 +13,19 @@ body {
 }
 
 .header {
-  margin: 20px;
+  margin: 20px 0px 0px 0px;
   border-bottom: 2px solid #02cda2;
   text-align: right;
   overflow: visible;
 }
-
-
+.header-contents{
+  width: 90%;
+  margin: auto;
+}
+.bg-slider label{
+  color: #fff;
+  text-shadow: 1px 2px 3px #000000;
+}
 
 nav ul li {
   display: inline-block;
@@ -27,13 +33,13 @@ nav ul li {
   padding-top: 5px;
 }
 .footer {
-  margin: 40px;
-  border-top: 2px solid #02cda2;
+    margin: 0px 0px 40px 0px;
+    border-top: 2px solid #02cda2;
 }
 .copyright {
-  font-size: 9px;
+  font-size: 12px;
   color:#02cda2;
-  text-align: left;
+  text-align: center;
 }
 .contact {
   color:#02cda2;

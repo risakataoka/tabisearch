@@ -3,9 +3,9 @@
 @section('title','インデックスページ | TABIサーチ')
 @section('content')
 <!--bootstrapで幅を指定-->
-<div class="container">
+<div class="">
   <div class="bg-slider">
-      <div class="col-md-8" style="margin-left: 16.666%;">
+      <div class="col-md-8">
       <!--form actionでsearchアクションを取得-->
         <form action="{{ action('TabiController@search') }}" method="get">
           <label>タイトルを検索する</label>

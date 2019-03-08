@@ -13,6 +13,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Carbon;
 use Config;
+use Auth;
 
 
 class RegisterController extends Controller

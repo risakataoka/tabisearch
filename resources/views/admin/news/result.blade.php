@@ -3,7 +3,7 @@
 @section('title','ログイン後インデックスページ | TABIサーチ')
 @section('content')
 <!--bootstrapで幅を指定-->
-  <div class="container-fluid">
+  <div class="">
     <div class="row">
       <div class="col-md-8" style="margin-left: 16.666%;">
       <!--form actionでsearchアクションを取得-->

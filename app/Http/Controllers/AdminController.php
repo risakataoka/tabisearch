@@ -31,7 +31,7 @@ class AdminController extends Controller
     // ・検索の定義
     // $cond_titleを明記することで検索機能が使えるようになる
     // $crawlerでスクレイピングしたいURLを取得
-    // $article_titles
+    // $article_titlesに記事のタイトルを代入
     //
     //
     //
@@ -41,19 +41,19 @@ class AdminController extends Controller
 
        $cond_title = $request->cond_title;
        ////////////////////1,LINEトラベル.jpのランキングページのみ
-       $crawler = Goutte::request('GET', 'https://www.travel.co.jp/guide/ranking/daily/');
-       $media_title_1 = $crawler->filter('title')->text();
+       $crawler_1 = Goutte::request('GET', 'https://www.travel.co.jp/guide/ranking/daily/');
+       $media_title_1 = $crawler_1->filter('title')->text();
 //記事のタイトルを取得、each()で繰り返し処理、text()で文字列を取得
-       $article_titles_1 = $crawler->filter('.rank_item_ttl')->each(function ($node) {
+       $article_titles_1 = $crawler_1->filter('.rank_item_ttl')->each(function ($node) {
          return $node->text();
        });
 //記事のURLを取得、each()で繰り返し処理、attr("href")でリンクを取得
-       $article_links_1 = $crawler->filter(".rank_item_ttl a")->each(function ($node) {
+       $article_links_1 = $crawler_1->filter(".rank_item_ttl a")->each(function ($node) {
          $path = $node->attr("href");
          return "https://www.travel.co.jp". $path;
        });
 //アイキャッチ画像を取得、each()で繰り返し処理、attr("src")で画像パスを取得
-       $article_image_paths_1 = $crawler->filter(".rank_item_img img")->each(function ($node) {
+       $article_image_paths_1 = $crawler_1->filter(".rank_item_img img")->each(function ($node) {
          return $node->attr("src");
        });
 //下の意味は？？配列のこと？空白でもできるの？article_は入れなくてもいいのか？
@@ -76,21 +76,24 @@ class AdminController extends Controller
        }
 
         ////////////////////2,地球の歩き方のニュースページのみ
-        $crawler = Goutte::request('GET', 'https://www.arukikata.co.jp/guidebook/');
-        $media_title_2 = $crawler->filter('title')->text();
+        $crawler_2 = Goutte::request('GET', 'https://www.arukikata.co.jp/guidebook/');
+        $media_title_2 = $crawler_2->filter('title')->text();
 //記事のタイトルを取得、each()で繰り返し処理、text()で文字列を取得
-       $article_titles_2 = $crawler->filter('.title_area h2')->each(function ($node) {
+       $article_titles_2 = $crawler_2->filter('.title_area h2')->each(function ($node) {
          return $node->text();
        });
 
 //記事のURLを取得、each()で繰り返し処理、attr("href")でリンクを取得
-       $article_links_2 = $crawler->filter(".title_area a")->each(function ($node) {
+       $article_links_2 = $crawler_2->filter("a.img_area")->each(function ($node) {
          return $node->attr("href");
        });
 //アイキャッチ画像を取得、each()で繰り返し処理、attr("src")で画像パスを取得
-       $article_image_paths_2 = $crawler->filter(".left_thumb img")->each(function ($node) {
-         return $node->attr('src');
+       $article_image_paths_2 = $crawler_2->filter("a.img_area img")->each(function ($node) {
+         if (strpos($node->attr('src'),"https://news.arukikata.co.jp/f") !== false){
+           return $node->attr('src');
+         }
        });
+       $article_image_paths_2 = array_values(array_filter($article_image_paths_2, "strlen"));
 //下の意味は？？配列のこと？空白でもできるの？article_は入れなくてもいいのか？
         $titles_2=[];
         $links_2=[];
@@ -111,21 +114,22 @@ class AdminController extends Controller
          }
        }
 
-       ////////////////////3,RETRIPトップの注目記事のみ
-       $crawler = Goutte::request('GET', 'https://gotrip.jp/');
 
-       $media_title_3 = $crawler->filter('title')->text();
+       ////////////////////3,RETRIPトップの注目記事のみ
+       $crawler_3 = Goutte::request('GET', 'https://gotrip.jp/');
+
+       $media_title_3 = $crawler_3->filter('title')->text();
 //記事のタイトルを取得、each()で繰り返し処理、text()で文字列を取得
-      $article_titles_3 = $crawler->filter('.title')->each(function ($node) {
+      $article_titles_3 = $crawler_3->filter('.title')->each(function ($node) {
         return $node->text();
       });
 //記事のURLを取得、each()で繰り返し処理、attr("href")でリンクを取得
-      $article_links_3 = $crawler->filter(".title a")->each(function ($node) {
+      $article_links_3 = $crawler_3->filter(".title a")->each(function ($node) {
         return $node->attr('href');
       });
 //アイキャッチ画像を取得、each()で繰り返し処理、attr("src")で画像パスを取得
 
-      $article_image_paths_3 = $crawler->filter(".featured-thumbnail img")->each(function ($node) {
+      $article_image_paths_3 = $crawler_3->filter("#page .featured-thumbnail img")->each(function ($node) {
         return $node->attr('src');
       });
 
@@ -138,6 +142,7 @@ class AdminController extends Controller
 // 画像も同じで、$1++;で繰り返し処理
       if ($cond_title != ''){
         $i=0;
+        \Debugbar::info("ーーーーーーーーーーーーー３つ目のサイトーーーーーーーーーーーーー");
         \Debugbar::info($article_titles_3,$article_links_3,$article_image_paths_3);
         foreach($article_titles_3 as $title_3){
           if (stripos($title_3,$cond_title) != false){
