@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('title','検索結果（ログイン後） | TABIサーチ')
+@section('title','検索結果（ログインなし） | TABIサーチ')
 @section('content')
 <!--bootstrapで幅を指定-->
       <div class="col-md-8" style="margin-left: 16.666%;">
       <!--form actionでsearchアクションを取得-->
-                <form action="{{ action('AdminController@adminSearch') }}" method="get">
+                <form action="{{ action('TabiController@search') }}" method="get">
                   <label>タイトルを検索する</label>
                     <div class="form-group row">
                       <div class="col col-9">
@@ -96,53 +96,7 @@
               </div>
           </div>
               <!--3つめbootstrap終わり-->
-          <!--<div class="row">-->
-            <div class="col-md-auto" >
-              <div class="border-top" style="margin-top: 10px;">閲覧履歴</div>
-                <div class="table table-default">
-                  <ul>
-                    @foreach (Auth::user()->browsinghistories as $history)
-                          <li><a href="{{ $history->link }}">{{ $history->title }}</a></li>
-                    @endforeach
-                  </ul>
-              </div>
-            </div>
-        <!--</div>-->
 <!-- /browsinghistoriy/create -->
-<script>
-        $(function(){
-            // Ajax button click
-          $.ajaxSetup({
-              headers: {
-                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-              }
-          });
-            $('.link').on('click',function(){
-                $.ajax({
-                    url:'/browsinghistoriy/create',
-                    type:'POST',
-                    data:{
-                        'link':$(this).attr("href"),
-                        'title':$(this).text()
-                    }
-                })
-                // Ajaxリクエストが成功した時発動
-                .done( (data) => {
-                    // $('.result').html(data);
-                    console.log(data);
-                })
-                // Ajaxリクエストが失敗した時発動
-                .fail( (data) => {
-                    // $('.result').html(data);
-                    console.log(data);
-                })
-                // Ajaxリクエストが成功・失敗どちらでも発動
-                .always( (data) => {
-                  console.log("成功");
-                });
-            });
-        });
-</script>
 <!--背景画像スライドショー-->
 <script>
 jQuery(function($) {

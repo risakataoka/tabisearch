@@ -37,18 +37,23 @@ class UserTest extends TestCase
         $response = $this->get('/no_route');
         $response->assertStatus(404);
 
-        // factory(User::class)->create([
-        //   'name' => 'AAA',
-        //   'email' => 'BBB@CCC.COM',
-        //   'password' => 'ABCABC',
-        // ]);
-        // factory(User::class, 10)->create();
-        //
-        // $this->assertDatabaseHas('users', [
-        //   'name' => 'AAA',
-        //   'email' => 'BBB@CCC.COM',
-        //   'password' => 'ABCABC',
-        // ]);
+        factory(User::class)->create([
+          'name' => 'AAA',
+          'email' => 'BBB@CCC.COM',
+          'password' => 'ABCABC',
+        ]);
+        factory(User::class, 10)->create();
+
+        $this->assertDatabaseHas('users', [
+          'name' => 'AAA',
+          'email' => 'BBB@CCC.COM',
+          'password' => 'ABCABC',
+        ]);
+        factory(User::class)->create([
+          'name' => 'VBB',
+          'email' => 'BBB@CCC.COM',
+          'password' => 'gasdfasd',
+        ]);
 
     }
 }
