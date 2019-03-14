@@ -169,13 +169,7 @@ class RegisterController extends Controller
 
                return view('auth.main.registered');
              }
-             //会員登録　論理削除
-             /*public function deleteData(Request $request)
-               {
-                 $user = Users::find($request->input('id'));
-                 $user->delete();
-                 return view('index');
-               }*/
+             
 
 
 
