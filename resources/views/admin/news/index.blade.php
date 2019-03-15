@@ -12,7 +12,7 @@
                   <div class="form-group row">
                     <div class="col col-9">
             <!--検索フォームを表示-->
-                        <input type="text" class="form-control" name="cond_title" placeholder="例）台湾,韓国 グルメ,ホテル">
+                        <input type="text" class="form-control" name="cond_title" placeholder="例）台湾">
                     </div>
                     <div class="col col-3">
                         {{ csrf_field() }}

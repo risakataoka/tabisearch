@@ -14,6 +14,8 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Carbon;
 use Config;
 use Auth;
+use SendGrid\Content;
+use SendGrid\Email;
 
 
 class RegisterController extends Controller
@@ -70,11 +72,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        /*return User::create([
-            //'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);*/
+
         $user = User::create([
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
@@ -84,6 +82,22 @@ class RegisterController extends Controller
         $email = new EmailVerification($user);
         Mail::to($user->email)->send($email);
 
+//デプロイ後、sendgridを使ってメールを送信
+        $from = new Email('tabisearch', 'test@example.com');
+        $from = new Email('From名', 'Fromアドレス');
+        $to = new Email('To名', 'Toアドレス');
+        $subject = 'テストタイトル';
+        $content = new Content(
+        'text/plain',
+        'テスト本文'
+        );
+        $mail = new Mail($from, $subject, $to, $content);
+        $sendGrid = new \SendGrid('risakataoka_api_key');
+        $response = $sendGrid->client->mail()->send()->post($mail);
+        \Debugbar::info($from,$to,$subject,$content,$mail,$sendGrid,$response);
+
+
+//↑
         return $user;
     }
 
@@ -169,7 +183,7 @@ class RegisterController extends Controller
 
                return view('auth.main.registered');
              }
-             
+
 
 
 

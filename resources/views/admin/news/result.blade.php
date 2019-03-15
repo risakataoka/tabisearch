@@ -94,8 +94,57 @@
                   @endif
                 @endif
               </div>
-          </div>
-              <!--3つめbootstrap終わり-->
+            <!--3つめbootstrap終わり-->
+            <!--4つめbootstrapのcardで外枠を作成-->
+            <div class="card card-default">
+              <p>{{ $media_title_4 }}</p>
+            <!--@$titlesがあるか、@titlesが関数になっているかを確認-->
+              @if(isset($titles_4))
+                @if(is_array($titles_4))
+            <!--$iを配列の1番目からはじめて、$titlesを数えた分まで以下の内容を繰り返します-->
+                  @for($i=0;$i < count($titles_4);$i++)
+                    <div class="card-body">
+            <!--リンクを表示します$links[$i]の[$i]がいまいちわからない-->
+                        <a href="{{ $links_4[$i] }}" class="row link" target="_blank" id="click_event">
+                          <div class="col-md-2">
+                            <img src="{{ $image_paths_4[$i] }}" alt="" style="width:100%;">
+                          </div>
+                          <div class="col-md-10">
+                            <h3>{{ $titles_4[$i] }}</h3>
+                          </div>
+                        </a>
+                    </div>
+                  @endfor
+                @endif
+              @endif
+            </div>
+        <!--4つめbootstrap終わり-->
+        <!--5つめbootstrapのcardで外枠を作成-->
+        <div class="card card-default">
+          <p>{{ $media_title_5 }}</p>
+        <!--@$titlesがあるか、@titlesが関数になっているかを確認-->
+          @if(isset($titles_5))
+            @if(is_array($titles_5))
+        <!--$iを配列の1番目からはじめて、$titlesを数えた分まで以下の内容を繰り返します-->
+              @for($i=0;$i < count($titles_5);$i++)
+                <div class="card-body">
+        <!--リンクを表示します$links[$i]の[$i]がいまいちわからない-->
+                    <a href="{{ $links_5[$i] }}" class="row link" target="_blank" id="click_event">
+                      <div class="col-md-2">
+                        <img src="{{ $image_paths_5[$i] }}" alt="" style="width:100%;">
+                      </div>
+                      <div class="col-md-10">
+                        <h3>{{ $titles_5[$i] }}</h3>
+                      </div>
+                    </a>
+                </div>
+              @endfor
+            @endif
+          @endif
+        </div>
+    <!--5つめbootstrap終わり-->
+     </div>
+
           <!--<div class="row">-->
             <div class="col-md-auto" >
               <div class="border-top" style="margin-top: 10px;">閲覧履歴</div>
