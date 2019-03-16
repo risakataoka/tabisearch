@@ -14,7 +14,7 @@
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.7",
         "weidner/goutte": "^1.1",
-        "sendgrid/sendgrid": "~5.0.9"
+        "sendgrid/sendgrid": "~6.2"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
