@@ -17,7 +17,7 @@ class SendGridSample extends Mailable
             ->view('auth.email.pre_register')
             ->subject('subject')
             ->from('from@example.com')
-            ->to(['risakataoka6@gmail.com'])
+            ->to('risakataoka6@gmail.com')
             ->sendgrid([
                 'personalizations' => [
                     [

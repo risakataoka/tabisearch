@@ -5,7 +5,7 @@
 <!--bootstrapで幅を指定-->
 <div class="">
   <div class="bg-slider">
-    <div class="container">
+    <div class="">
      <div class="row">
       <div class="col-md-8 rectangle-transparent">
           <p>ツアー広告などを省いて純粋な旅行情報を入手したい人へ</br>
