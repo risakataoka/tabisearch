@@ -52,6 +52,7 @@ class ContactsController extends Controller
     $request->session()->regenerateToken();
 
 
+
     // 送信メール
     \Mail::send(new \App\Mail\Contact([
         'to' => $request->email,

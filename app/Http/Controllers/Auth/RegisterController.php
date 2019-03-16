@@ -83,19 +83,30 @@ class RegisterController extends Controller
         //$email = new EmailVerification($user);
         //Mail::to($user->email)->send($email);
 
+        // 送信メール
+        \Mail::send(new \App\Mail\SendGridSample([
+            'to' => $data['email'],
+            // 'to_name' => $request->name,
+            'from' => 'from@example.com',
+            // 'from_name' => 'MySite',
+            'subject' => 'お問い合わせありがとうございました。',
+            // 'type' => $request->type,
+            // 'gender' => $request->gender,
+            'content' => [base64_encode($data['email'])]
+        ],'to'));
 //デプロイ後、sendgridを使ってメールを送信
-        $from = new Email('tabisearch', 'test@example.com');
-        $to = new Email('test',$user->email);
-        $subject = 'テストタイトル';
-        $content = new Content(
-        'text/plain',
-        'テスト本文'
-        );
-        $mail = new Mail($from, $subject, $to, $content);
-
-
-        $sendGrid = new \SendGrid('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');
-        $response = $sendGrid->client->mail()->send()->post($mail);
+        // $from = new Email('tabisearch', 'test@example.com');
+        // $to = new Email('test',$user->email);
+        // $subject = 'テストタイトル';
+        // $content = new Content(
+        // 'text/plain',
+        // 'テスト本文'
+        // );
+        // $mail = new Mail($from, $subject, $to, $content);
+        //
+        //
+        // $sendGrid = new \SendGrid('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');
+        // $response = $sendGrid->client->mail()->send()->post($mail);
         // \Debugbar::info($from,$to,$subject,$content,$mail,$sendGrid,$response);
 //↑
         return $user;
