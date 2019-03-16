@@ -16,6 +16,7 @@ use Config;
 use Auth;
 use SendGrid\Content;
 use SendGrid\Email;
+//use SendGrid\Mail;
 
 
 class RegisterController extends Controller
@@ -79,24 +80,23 @@ class RegisterController extends Controller
             'email_verify_token' => base64_encode($data['email']),
         ]);
 
-        $email = new EmailVerification($user);
-        Mail::to($user->email)->send($email);
+        //$email = new EmailVerification($user);
+        //Mail::to($user->email)->send($email);
 
 //デプロイ後、sendgridを使ってメールを送信
         $from = new Email('tabisearch', 'test@example.com');
-        $from = new Email('From名', 'Fromアドレス');
-        $to = new Email('To名', 'Toアドレス');
+        $to = new Email('test',$user->email);
         $subject = 'テストタイトル';
         $content = new Content(
         'text/plain',
         'テスト本文'
         );
         $mail = new Mail($from, $subject, $to, $content);
-        $sendGrid = new \SendGrid('risakataoka_api_key');
+
+
+        $sendGrid = new \SendGrid('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');
         $response = $sendGrid->client->mail()->send()->post($mail);
         \Debugbar::info($from,$to,$subject,$content,$mail,$sendGrid,$response);
-
-
 //↑
         return $user;
     }

@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ContactRequest;
 use Illuminate\Http\Request;
 use App\Contact;
+use SendGrid\Content;
+use SendGrid\Email;
+use SendGrid\Mail;
 
 class ContactsController extends Controller
 {

@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST', 'smtp.sendgrid.net'),
 
     /*
     |--------------------------------------------------------------------------
@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', null),
-        'name' => env('MAIL_FROM_NAME', null),
+        'address' => env('MAIL_FROM_ADDRESS', "from@example.com"),
+        'name' => env('MAIL_FROM_NAME', "LaravelExampler"),
     ],
 
     /*
@@ -71,7 +71,7 @@ return [
     |
     */
 
-    'encryption' => env('MAIL_ENCRYPTION', null),
+    'encryption' => env('MAIL_ENCRYPTION', tls),
 
     /*
     |--------------------------------------------------------------------------
