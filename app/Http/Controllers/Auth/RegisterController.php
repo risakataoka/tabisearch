@@ -16,7 +16,7 @@ use Config;
 use Auth;
 use SendGrid\Content;
 use SendGrid\Email;
-//use SendGrid\Mail;
+// use SendGrid\Mail;
 
 
 class RegisterController extends Controller
@@ -96,7 +96,7 @@ class RegisterController extends Controller
 
         $sendGrid = new \SendGrid('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');
         $response = $sendGrid->client->mail()->send()->post($mail);
-        \Debugbar::info($from,$to,$subject,$content,$mail,$sendGrid,$response);
+        // \Debugbar::info($from,$to,$subject,$content,$mail,$sendGrid,$response);
 //↑
         return $user;
     }
