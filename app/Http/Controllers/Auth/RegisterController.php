@@ -105,7 +105,7 @@ class RegisterController extends Controller
         // $mail = new Mail($from, $subject, $to, $content);
         //
         //
-        // $sendGrid = new \SendGrid('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');
+        // $sendGrid = new \SendGrid('');
         // $response = $sendGrid->client->mail()->send()->post($mail);
         // \Debugbar::info($from,$to,$subject,$content,$mail,$sendGrid,$response);
 //↑
