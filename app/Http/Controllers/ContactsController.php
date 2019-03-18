@@ -8,6 +8,7 @@ use App\Contact;
 use SendGrid\Content;
 use SendGrid\Email;
 use SendGrid\Mail;
+use App\Mail\SendGridSample;
 
 class ContactsController extends Controller
 {
@@ -50,32 +51,59 @@ class ContactsController extends Controller
 
     // 二重送信防止
     $request->session()->regenerateToken();
-
-
-
     // 送信メール
-    \Mail::send(new \App\Mail\Contact([
-        'to' => $request->email,
-        'to_name' => $request->name,
-        'from' => 'from@example.com',
-        'from_name' => 'MySite',
-        'subject' => 'お問い合わせありがとうございました。',
-        'type' => $request->type,
-        'gender' => $request->gender,
-        'body' => $request->body
-    ],'to'));
+    $from     = new Email('tabisearch', 'tabisearch@example.com');
+    $to       = new Email($request->name, $request->email);
+    $subject  = 'お問い合わせありがとうございました。';
+    $content = new Content(
+        'text/html',
+        'お問い合わせを受付いたしました。'
+    );
+    $mail     = new Mail($from, $subject, $to,$content);
+    $sendGrid = new \SendGrid(env("SENDGRID_API_KEY"));
+    \Debugbar::info($mail);
+    $response = $sendGrid->client->mail()->send()->post($mail);
+    \Debugbar::info($from,$to,$subject,$response,$content);
 
     // 受信メール
-    \Mail::send(new \App\Mail\Contact([
-        'to' => 'kataoka@gmail.com',
-        'to_name' => 'MySite',
-        'from' => $request->email,
-        'from_name' => $request->name,
-        'subject' => 'サイトからのお問い合わせ',
-        'type' => $request->type,
-        'gender' => $request->gender,
-        'body' => $request->body
-    ], 'from'));
+    $from     = new Email($request->name, $request->email);
+    $to       = new Email('サイト運営者', 'risakataoka6@gmail.com');
+    $subject  = 'サイトからのお問い合わせ。';
+    $sendData = ['from'=>$request->email, 'from_name'=>$request->name, 'subject'=>'サイトからのお問い合わせ', 'type'=>$request->type,
+    'gender'=>$request->gender, 'body'=>$request->body];
+    $content = new Content(
+        'text/html',
+          view('emails.contactFromUser', $sendData)->render()
+    );
+    $mail     = new Mail($from, $subject, $to,$content);
+    $sendGrid = new \SendGrid(env("SENDGRID_API_KEY"));
+    \Debugbar::info($mail);
+    $response = $sendGrid->client->mail()->send()->post($mail);
+    \Debugbar::info($from,$to,$subject,$response,$content);
+
+    // // 送信メール
+    // \Mail::send(new \App\Mail\Contact([
+    //     'to' => $request->email,
+    //     'to_name' => $request->name,
+    //     'from' => 'from@example.com',
+    //     'from_name' => 'MySite',
+    //     'subject' => 'お問い合わせありがとうございました。',
+    //     'type' => $request->type,
+    //     'gender' => $request->gender,
+    //     'body' => $request->body
+    // ],'to'));
+    //
+    // // 受信メール
+    // \Mail::send(new \App\Mail\Contact([
+    //     'to' => 'kataoka@gmail.com',
+    //     'to_name' => 'MySite',
+    //     'from' => $request->email,
+    //     'from_name' => $request->name,
+    //     'subject' => 'サイトからのお問い合わせ',
+    //     'type' => $request->type,
+    //     'gender' => $request->gender,
+    //     'body' => $request->body
+    // ], 'from'));
     return view('contacts.complete');
   }
 

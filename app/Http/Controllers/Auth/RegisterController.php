@@ -7,7 +7,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
+//use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Auth\Events\Registered;
@@ -16,7 +16,7 @@ use Config;
 use Auth;
 use SendGrid\Content;
 use SendGrid\Email;
-//use SendGrid\Mail;
+use SendGrid\Mail;
 use App\Mail\SendGridSample;
 
 
@@ -80,16 +80,22 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'email_verify_token' => base64_encode($data['email']),
         ]);
-
         $from     = new Email('tabisearch', 'tabisearch@example.com');
         $to       = new Email('新規会員登録をご希望の方', $user->email);
-        $subject  = '【site】仮登録が完了しました';
-        //$content  = view('auth.email.pre_register');
-        $mail     = new Mail($from, $subject, $to);
+        $subject  = '【tabisearch】仮登録が完了しました';
+        $content = new Content(
+            'text/html',
+            strval(
+                view(
+                    'auth.email.pre_register',['token' => $user->email_verify_token]
+                )
+            )
+        );
+        $mail     = new Mail($from, $subject, $to,$content);
         $sendGrid = new \SendGrid(env("SENDGRID_API_KEY"));
-        \Debugbar::info(env("SENDGRID_API_KEY"));
+        \Debugbar::info($mail);
         $response = $sendGrid->client->mail()->send()->post($mail);
-        \Debugbar::info($from,$to,$subject,$response);
+        \Debugbar::info($from,$to,$subject,$response,$content);
 
         return $user;
     }
