@@ -19,8 +19,11 @@
                     </div>
                </form>
         </div>
-          <!--背景画像-->
-      <img src="/image/arizona.jpg" style="width: 100%; height: 100%;">
+          <!--背景画像と検索キーワード表示-->
+        <div class="img_and_keyword">
+          <img src="/image/arizona.jpg">
+          <p>「{{ $cond_title }}」に該当する記事</p>
+        </div>
 <!--bootstrapで幅を指定-->
   　　<div class="col-md-8" style="margin-left: 16.666%;">
                 <!--1つめのサイト枠。bootstrapのcardで外枠を作成-->

@@ -16,7 +16,8 @@ use Config;
 use Auth;
 use SendGrid\Content;
 use SendGrid\Email;
-// use SendGrid\Mail;
+//use SendGrid\Mail;
+use App\Mail\SendGridSample;
 
 
 class RegisterController extends Controller
@@ -80,35 +81,16 @@ class RegisterController extends Controller
             'email_verify_token' => base64_encode($data['email']),
         ]);
 
-        //$email = new EmailVerification($user);
-        //Mail::to($user->email)->send($email);
+        $from     = new Email('tabisearch', 'tabisearch@example.com');
+        $to       = new Email('新規会員登録をご希望の方', $user->email);
+        $subject  = '【site】仮登録が完了しました';
+        //$content  = view('auth.email.pre_register');
+        $mail     = new Mail($from, $subject, $to);
+        $sendGrid = new \SendGrid(env("SENDGRID_API_KEY"));
+        \Debugbar::info(env("SENDGRID_API_KEY"));
+        $response = $sendGrid->client->mail()->send()->post($mail);
+        \Debugbar::info($from,$to,$subject,$response);
 
-        // 送信メール
-        \Mail::send(new \App\Mail\SendGridSample([
-            'to' => $data['email'],
-            // 'to_name' => $request->name,
-            'from' => 'from@example.com',
-            // 'from_name' => 'MySite',
-            'subject' => 'お問い合わせありがとうございました。',
-            // 'type' => $request->type,
-            // 'gender' => $request->gender,
-            'content' => [base64_encode($data['email'])]
-        ],'to'));
-//デプロイ後、sendgridを使ってメールを送信
-        // $from = new Email('tabisearch', 'test@example.com');
-        // $to = new Email('test',$user->email);
-        // $subject = 'テストタイトル';
-        // $content = new Content(
-        // 'text/plain',
-        // 'テスト本文'
-        // );
-        // $mail = new Mail($from, $subject, $to, $content);
-        //
-        //
-        // $sendGrid = new \SendGrid('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');
-        // $response = $sendGrid->client->mail()->send()->post($mail);
-        // \Debugbar::info($from,$to,$subject,$content,$mail,$sendGrid,$response);
-//↑
         return $user;
     }
 

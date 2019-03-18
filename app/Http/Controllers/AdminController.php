@@ -245,7 +245,7 @@ class AdminController extends Controller
     {
       $user = User::find($request->id);
       $user->delete();
-      return redirect('/');
+      return view('admin.news.delete_completed');
     }
 
 //メールアドレスの変更ボタンを押した際のアクション

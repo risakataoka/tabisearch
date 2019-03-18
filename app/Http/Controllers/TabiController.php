@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Goutte;
 use DOMDocument;
+use SendGrid\Email;
+use SendGrid\Mail;
+use App\Mail\SendGridSample;
+use SendGrid\Content;
 
 class TabiController extends Controller
 {
@@ -15,6 +19,7 @@ class TabiController extends Controller
 
     public function searchIndex(Request $request)
     {
+      
       $cond_title = $request->cond_title;
       return view('index');
     }
@@ -225,4 +230,5 @@ class TabiController extends Controller
 //パジネーション
     //$posts = Post::latest()->paginate(5);
     }
+
 }

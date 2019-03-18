@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('title','インデックスページ | TABIサーチ')
+@section('title','インデックスページ（ログイン前） | TABIサーチ')
 @section('content')
 <!--bootstrapで幅を指定-->
 <div class="">
   <div class="bg-slider">
-    <div class="">
+    <div class="container">
      <div class="row">
       <div class="col-md-8 rectangle-transparent">
           <p>ツアー広告などを省いて純粋な旅行情報を入手したい人へ</br>
@@ -31,6 +31,7 @@
                     <!--↑ここまではテキストの内容-->
               </div>
             </div>
+
         <div class="row">
           <div class="rectangle-wide">
             <p>「TABI LABO」や「地球の歩き方」など</br>

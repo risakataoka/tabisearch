@@ -1,10 +1,9 @@
 @extends('layouts.app')
 @section('content')
- 
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-default">
+<div class="container" style="margin: 0px;">
+    <div class="row" style="margin: 0px;">
+        <div class="col-md-12" style="margin: 0px;">
+            <div class="panel panel-default" style="margin: 0px;">
                 <div class="panel-heading">お問い合わせ</div>
                 <div class="panel-body">
                     <p>誤りがないことを確認のうえ送信ボタンをクリックしてください。</p>
