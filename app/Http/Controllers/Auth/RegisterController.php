@@ -93,9 +93,9 @@ class RegisterController extends Controller
         );
         $mail     = new Mail($from, $subject, $to,$content);
         $sendGrid = new \SendGrid(env("SENDGRID_API_KEY"));
-        \Debugbar::info($mail);
+        //\Debugbar::info($mail);
         $response = $sendGrid->client->mail()->send()->post($mail);
-        \Debugbar::info($from,$to,$subject,$response,$content);
+        //\Debugbar::info($from,$to,$subject,$response,$content);
 
         return $user;
     }
@@ -136,7 +136,7 @@ class RegisterController extends Controller
                 // ユーザーステータス更新
                 $user->status = config('const.USER_STATUS.MAIL_AUTHED');
                 $user->verify_at = Carbon::now();
-                \Debugbar::error($email_token);
+                //\Debugbar::error($email_token);
                 if($user->save()) {
                     return view('auth.main.register', compact('email_token'));
                 } else{
@@ -155,7 +155,7 @@ class RegisterController extends Controller
                'birth_day' => 'required|numeric',
              ]);
              //データ保持用
-             \Debugbar::error($request);
+             //\Debugbar::error($request);
              $user = new User();
              $user->name = $request->name;
              $user->name_pronunciation = $request->name_pronunciation;
@@ -169,9 +169,9 @@ class RegisterController extends Controller
 
            public function mainRegister(Request $request)
              {
-              \Debugbar::error($request);
+              //\Debugbar::error($request);
                $user = User::where('email_verify_token',$request->email_verify_token)->first();
-              \Debugbar::error($user);
+              //\Debugbar::error($user);
                $user->status = config('const.USER_STATUS.REGISTER');
                $user->name = $request->name;
                $user->name_pronunciation = $request->name_pronunciation;

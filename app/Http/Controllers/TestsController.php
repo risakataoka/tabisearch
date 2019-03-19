@@ -82,7 +82,7 @@ class TestsController extends Controller
 // 画像も同じで、$1++;で繰り返し処理
          if ($cond_title != ''){
            $i=0;
-           \Debugbar::info($article_titles_2,$article_links_2,$article_image_paths_2);
+           //\Debugbar::info($article_titles_2,$article_links_2,$article_image_paths_2);
            foreach($article_titles_2 as $title_2){
              if (stripos($title_2,$cond_title) != false){
                $titles_2[] = $title_2;
@@ -120,7 +120,7 @@ class TestsController extends Controller
 // 画像も同じで、$1++;で繰り返し処理
         if ($cond_title != ''){
           $i=0;
-          \Debugbar::info($article_titles_3,$article_links_3,$article_image_paths_3);
+          //\Debugbar::info($article_titles_3,$article_links_3,$article_image_paths_3);
           foreach($article_titles_3 as $title_3){
             if (stripos($title_3,$cond_title) != false){
               $titles_3[] = $title_3;

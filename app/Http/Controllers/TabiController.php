@@ -19,7 +19,7 @@ class TabiController extends Controller
 
     public function searchIndex(Request $request)
     {
-      
+
       $cond_title = $request->cond_title;
       return view('index');
     }
@@ -175,7 +175,7 @@ class TabiController extends Controller
      // 画像も同じで、$1++;で繰り返し処理
      if ($cond_title != ''){
        $i=0;
-    \Debugbar::info($article_titles_4,$article_links_4,$article_image_paths_4);
+    //\Debugbar::info($article_titles_4,$article_links_4,$article_image_paths_4);
        foreach($article_titles_4 as $title_4){
          if (stripos($title_4,$cond_title) != false){
            $titles_4[] = $title_4;
@@ -210,7 +210,7 @@ class TabiController extends Controller
      // 画像も同じで、$1++;で繰り返し処理
      if ($cond_title != ''){
        $i=0;
-    \Debugbar::info($article_titles_5,$article_links_5,$article_image_paths_5);
+    //\Debugbar::info($article_titles_5,$article_links_5,$article_image_paths_5);
        foreach($article_titles_5 as $title_5){
          if (stripos($title_5,$cond_title) != false){
            $titles_5[] = $title_5;

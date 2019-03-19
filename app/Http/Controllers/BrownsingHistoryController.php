@@ -13,7 +13,7 @@ class BrownsingHistoryController extends Controller
     {
 
       $history = new BrowsingHistory;
-      \Debugbar::info($history);
+      //\Debugbar::info($history);
       $history->user_id = Auth::user()->id;
       $history->link = $request->link;
       $history->title = $request->title;

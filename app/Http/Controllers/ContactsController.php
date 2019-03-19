@@ -61,9 +61,9 @@ class ContactsController extends Controller
     );
     $mail     = new Mail($from, $subject, $to,$content);
     $sendGrid = new \SendGrid(env("SENDGRID_API_KEY"));
-    \Debugbar::info($mail);
+    //\Debugbar::info($mail);
     $response = $sendGrid->client->mail()->send()->post($mail);
-    \Debugbar::info($from,$to,$subject,$response,$content);
+    //\Debugbar::info($from,$to,$subject,$response,$content);
 
     // 受信メール
     $from     = new Email($request->name, $request->email);
@@ -77,9 +77,9 @@ class ContactsController extends Controller
     );
     $mail     = new Mail($from, $subject, $to,$content);
     $sendGrid = new \SendGrid(env("SENDGRID_API_KEY"));
-    \Debugbar::info($mail);
+    //\Debugbar::info($mail);
     $response = $sendGrid->client->mail()->send()->post($mail);
-    \Debugbar::info($from,$to,$subject,$response,$content);
+    //\Debugbar::info($from,$to,$subject,$response,$content);
 
     // // 送信メール
     // \Mail::send(new \App\Mail\Contact([
