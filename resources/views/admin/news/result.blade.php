@@ -3,7 +3,7 @@
 @section('title','検索結果（ログイン後） | TABIサーチ')
 @section('content')
 <!--bootstrapで幅を指定-->
-      <div class="col-md-8" style="margin-left: 16.666%;">
+      <div class="col-md-8">
       <!--form actionでsearchアクションを取得-->
                 <form action="{{ action('AdminController@adminSearch') }}" method="get">
                   <label>タイトルを検索する</label>
@@ -25,7 +25,7 @@
           <p>「{{ $cond_title }}」に該当する記事</p>
         </div>
 <!--bootstrapで幅を指定-->
-  　　<div class="col-md-8" style="margin-left: 16.666%;">
+  　　<div class="col-md-8">
                 <!--1つめのサイト枠。bootstrapのcardで外枠を作成-->
                 <div class="card card-default">
                   <p>{{ $media_title_1 }}</p>

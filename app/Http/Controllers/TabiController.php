@@ -26,6 +26,7 @@ class TabiController extends Controller
 
     public function search(Request $request)
     {
+
       ////////////////////////////////////////////////////
       // 2019/2/23最終更新日
       // 検索結果の取得

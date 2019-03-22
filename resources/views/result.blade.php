@@ -3,7 +3,8 @@
 @section('title','検索結果（ログインなし） | TABIサーチ')
 @section('content')
 <!--bootstrapで幅を指定-->
-      <div class="col-md-8" style="margin-left: 16.666%;">
+    <div class="row flex">
+      <div class="col-md-8">
       <!--form actionでsearchアクションを取得-->
                 <form action="{{ action('TabiController@search') }}" method="get">
                   <label>タイトルを検索する</label>
@@ -19,13 +20,15 @@
                     </div>
                </form>
         </div>
+      </div>
           <!--背景画像と検索キーワード表示-->
         <div class="img_and_keyword">
           <img src="/image/arizona.jpg">
           <p>「{{ $cond_title }}」に該当する記事</p>
         </div>
 <!--bootstrapで幅を指定-->
-  　　<div class="col-md-8" style="margin-left: 16.666%;">
+   <div class="row flex">
+  　　<div class="col-md-8">
                 <!--1つめのサイト枠。bootstrapのcardで外枠を作成-->
                 <div class="card card-default">
                   <p>{{ $media_title_1 }}</p>
@@ -166,5 +169,6 @@
             @endif
       </div>
   <!--5つめbootstrap終わり-->
-      </div>
+    </div>
+  </div>
 @endsection
