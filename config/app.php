@@ -53,7 +53,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'https://safe-lake-52727.herokuapp.com'),
 
     'asset_url' => env('ASSET_URL', null),
 
