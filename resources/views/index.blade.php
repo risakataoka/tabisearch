@@ -20,7 +20,7 @@
                         <div class="form-group row">
                           <div class="col col-9">
                   <!--検索フォームを表示-->
-                              <input type="text" class="form-control" name="cond_title" placeholder="例）台湾">
+                              <input type="text" class="form-control" name="cond_title" placeholder="例）絶景">
                           </div>
                           <div class="col col-3">
                               {{ csrf_field() }}
