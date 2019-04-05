@@ -1,69 +1,63 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
 
-## About Laravel
+## About Tabi search
+◆エレベータピッチ
+複数の人気旅行メディアをまたがり、効率よく旅行情報を入手したい方向けのトラベル情報検索システムです。
+旅行に関するキーワード（旅行先やホテル名、交通機関名など）を入れると、そのキーワードに即した複数の人気旅行メディアが提供している記事を一覧で閲覧できる機能が備わっています。
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+◆サービスの目的
+グーグルやヤフーなどで普通に旅行情報について検索をすると、ツアー会社などの宣伝的なページも多くまぎれていて、タイトルだけでは本当に検索キーワードに沿った単純な情報なのかわかりづらい。ほしい情報だけを効率よく取得できるよう、広告などを省いて情報ページに特化したキュレーションサイトがあると便利だと思ったから。
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+◆サービスの概要
+いくつかの旅サイトの中で人気記事を表示させるシステム。
+自分の行きたい場所などのキーワードを入力して検索すると、そのキーワードに即した複数の旅行サイトを経由した人気記事一覧が表示される。
+また記事に画像があればそれが表示される。
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications.
+例：「バルセロナ」
 
-## Learning Laravel
+検索結果「バルセロナ」↓
+・旅行メディア：地球の歩き方を経由して
+「私のバルセロナ旅行記2泊3日」
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of any modern web application framework, making it a breeze to get started learning the framework.
+・旅行メディア：リトリップを経由して
+「バルセロナでおすすめの美味しいお店10選」
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+などの記事が検索結果一覧に表示される。
+※現在一つのキーワードのみでの検索となります。複数キーワードでの検索方法について模索中。
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell):
+◆ターゲットユーザー
+ペルソナ
+名前：片岡利紗
+年齢：30
+性別：女
+趣味：海外旅行（個人手配で柔軟に旅をするスタイルが好き）
+習慣：ネットサーフィン
+悩みごと：旅行関連の情報を検索しようとすると、検索エンジンの中に多数の旅行会社の広告（ツアー情報、航空券、ホテル）などが紛れていて、有効な情報を入手するのにいくつものサイトをはしごするのが面倒に感じている。また、ニッチな（人があまり行かない）旅先の情報もほしいと思っている。
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
 
-## Contributing
+◆ユーザーストーリーマッピング
+・キーワード検索機能を使用し、旅行情報の取得ができる
+・ユーザーはアカウントを作成することができる
+・アカウントを作成することでユーザー自身の閲覧履歴を参照できるようになる
+・アカウントを作成しなくてもキーワード検索はすることができる
+・運営元にお問い合わせをすることができる
+・ユーザーはアカウントを退会することができる
+・ユーザーはアカウント情報（メールアドレス、パスワード）を変更することができる
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Security Vulnerabilities
+◆システムの機能について
+・検索窓設置
+・他社メディアの情報を表示（スクレイピング：Goutteライブラリ使用）
+・会員登録機能（Auth使用）
+・新規登録の際のメール認証機能
+・会員退会
+・会員情報変更
+・お問い合わせ
+・ユーザー閲覧履歴（ajax使用）
+・ユニットテスト(PHPunit)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+※WordPressでブログも書いております。サイト構築で得た知識を備忘録として残していこうと思っております。
+http://parastripdiary.net/it/
